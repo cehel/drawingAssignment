@@ -1,4 +1,4 @@
-package sg.zuehlke.drawing;
+package sg.zuehlke.drawing.service;
 
 
 import sg.zuehlke.drawing.model.Pixel;

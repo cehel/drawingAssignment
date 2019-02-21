@@ -1,4 +1,4 @@
-package sg.zuehlke.drawing;
+package sg.zuehlke.drawing.service;
 
 import org.junit.Before;
 import org.junit.Test;
