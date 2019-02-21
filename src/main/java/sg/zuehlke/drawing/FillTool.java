@@ -3,21 +3,20 @@ package sg.zuehlke.drawing;
 
 import sg.zuehlke.drawing.model.Pixel;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by celineheldner on 19.02.19.
  */
-public class FillTool {
+class FillTool {
     private Canvas canvas;
-    private List<Pixel> toBeColored = new ArrayList<>();
+    private Set<Pixel> toBeColored = new HashSet<>();
     private List<Pixel> toBeVisited = new ArrayList<>();
-    private List<Pixel> alreadyVisited = new ArrayList<>();
+    private Set<Pixel> alreadyVisited = new HashSet<>();
     private char currentColor;
 
 
-    public List<Pixel> findPixelsToFill(int x, int y, Canvas canvas) {
+    Collection<Pixel> findPixelsToFill(int x, int y, Canvas canvas) {
         init();
         this.canvas = canvas;
         this.toBeVisited.add(new Pixel(x, y));
@@ -45,10 +44,7 @@ public class FillTool {
     }
 
     private boolean pixelHasCurrentColor(Pixel pixel) {
-        if (canvas.getColor(pixel) == currentColor) {
-            return true;
-        }
-        return false;
+        return canvas.getColor(pixel) == currentColor;
     }
 
     private void addToVisit(int x, int y) {
@@ -68,7 +64,8 @@ public class FillTool {
         if (
                 canvas.isInsideCanvas(pixel)
                 && canvas.getColor(pixel) == currentColor
-                && !alreadyVisited.contains(pixel))
+                && !alreadyVisited.contains(pixel)
+                && !toBeVisited.contains(pixel))
         {
             toBeVisited.add(pixel);
         }

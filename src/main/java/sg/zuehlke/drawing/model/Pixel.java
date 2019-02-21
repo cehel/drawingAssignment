@@ -4,8 +4,8 @@ package sg.zuehlke.drawing.model;
  * Created by celineheldner on 19.02.19.
  */
 public class Pixel {
-    int x;
-    int y;
+    private int x;
+    private int y;
 
     public Pixel(int xCoord, int yCoord){
         this.x = xCoord;
@@ -27,8 +27,8 @@ public class Pixel {
 
         Pixel pixel = (Pixel) o;
 
-        if (getX() != pixel.getX()) return false;
-        return getY() == pixel.getY();
+        if (this.x != pixel.getX()) return false;
+        return this.y == pixel.getY();
     }
 
     @Override

@@ -5,13 +5,13 @@ package sg.zuehlke.drawing;
 import org.springframework.stereotype.Component;
 import sg.zuehlke.drawing.model.Pixel;
 
-import java.util.List;
+import java.util.Collection;
 
 @Component
 public class Canvas {
     private char[][] representation;
 
-    public void initCanvas(int width, int height) {
+    void initCanvas(int width, int height) {
         if (height < 1 || width < 1){
             throw new IllegalArgumentException("width and height must be bigger than 0!");
         }
@@ -19,14 +19,14 @@ public class Canvas {
         drawEmptyCanvasWithBorder();
     }
 
-    public void drawRectangle(int x1, int y1, int x2, int y2) {
+    void drawRectangle(int x1, int y1, int x2, int y2) {
         drawHorizontalLine(x1, x2, y1);
         drawHorizontalLine(x1, x2, y2);
         drawVerticalLine(y1, y2, x1);
         drawVerticalLine(y1, y2, x2);
     }
 
-    public void drawLine(int x1, int y1, int x2, int y2) throws IllegalArgumentException{
+    void drawLine(int x1, int y1, int x2, int y2) throws IllegalArgumentException{
         if ( representation == null ) {
             throw new UnsupportedOperationException("The canvas needs to be created before starting to draw. Use 'C width height' first.");
         }
@@ -43,20 +43,20 @@ public class Canvas {
         }
     }
 
-    public char getColor(Pixel pixel){
+    char getColor(Pixel pixel){
         return getColor(pixel.getX(), pixel.getY());
     }
 
-    public char getColor(int x, int y){
+    char getColor(int x, int y){
         return representation[y][x];
     }
 
-    public void fill(int x, int y, char color) {
+    void fill(int x, int y, char color) {
         if ( representation == null ) {
             throw new UnsupportedOperationException("The canvas needs to be created before starting to draw. Use 'C width height' first.");
         }
         FillTool filler = new FillTool();
-        List<Pixel> pixelsToFill = filler.findPixelsToFill(x, y, this);
+        Collection<Pixel> pixelsToFill = filler.findPixelsToFill(x, y, this);
         for (Pixel pixel: pixelsToFill) {
             representation[pixel.getY()][pixel.getX()] = color;
         }
@@ -77,11 +77,11 @@ public class Canvas {
         }
     }
 
-    public boolean isInsideCanvas(Pixel pixel){
+    boolean isInsideCanvas(Pixel pixel){
         return isInsideCanvas(pixel.getX(), pixel.getY());
     }
 
-    public boolean isInsideCanvas(int x, int y){
+    private boolean isInsideCanvas(int x, int y){
         if (y<1 || y >= representation.length-1) {
             return false;
         }

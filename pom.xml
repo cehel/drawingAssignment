@@ -10,7 +10,7 @@
     </parent>
     <groupId>sg.zuehlke</groupId>
     <artifactId>drawing</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>drawing</name>
     <description>Drawing project in Spring Boot</description>
 
