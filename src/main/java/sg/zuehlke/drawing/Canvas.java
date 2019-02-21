@@ -27,6 +27,9 @@ public class Canvas {
     }
 
     public void drawLine(int x1, int y1, int x2, int y2) throws IllegalArgumentException{
+        if ( representation == null ) {
+            throw new UnsupportedOperationException("The canvas needs to be created before starting to draw. Use 'C width height' first.");
+        }
         if (!isInsideCanvas(x1,y1) || !isInsideCanvas(x1,y2)){
             throw new IllegalArgumentException("Line should be within bounds!");
         }
@@ -49,6 +52,9 @@ public class Canvas {
     }
 
     public void fill(int x, int y, char color) {
+        if ( representation == null ) {
+            throw new UnsupportedOperationException("The canvas needs to be created before starting to draw. Use 'C width height' first.");
+        }
         FillTool filler = new FillTool();
         List<Pixel> pixelsToFill = filler.findPixelsToFill(x, y, this);
         for (Pixel pixel: pixelsToFill) {

@@ -74,6 +74,12 @@ public class CanvasTest {
         canvas.initCanvas(20, 0);
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void testDrawLineWithoutFails() {
+        //given then
+        canvas.drawLine(1, 2, 1,6);
+    }
+
     @Test
     public void testFillCanvas() {
         //given
