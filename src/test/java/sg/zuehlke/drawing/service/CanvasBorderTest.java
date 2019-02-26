@@ -8,8 +8,9 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-/* Created by celineheldner on 2019-02-15 */
-
+/**
+ * Created by celineheldner on 19.02.19.
+ */
 @RunWith(Parameterized.class)
 public class CanvasBorderTest {
 

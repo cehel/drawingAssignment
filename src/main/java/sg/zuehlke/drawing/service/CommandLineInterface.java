@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 
+/**
+ * Created by celineheldner on 19.02.19.
+ */
 @ShellComponent
 public class CommandLineInterface {
 

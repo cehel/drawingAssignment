@@ -3,9 +3,9 @@ package sg.zuehlke.drawing.service;
 import org.junit.Assert;
 import org.junit.Test;
 
-/* Created by celineheldner on 2019-02-15 */
-
-
+/**
+ * Created by celineheldner on 19.02.19.
+ */
 public class CanvasTest {
 
     private Canvas canvas = new Canvas();
@@ -64,9 +64,23 @@ public class CanvasTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
+    public void testDrawLineWithIllegalCoordinates() {
+        //given then
+        canvas.initCanvas(20, 4);
+        canvas.drawLine(1, 3, 3, 1);
+
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void testDrawCanvasFails() {
         //given then
         canvas.initCanvas(20, 0);
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void testDrawFillFails() {
+        //given then
+        canvas.fill(2, 1, 'c');
     }
 
     @Test(expected = UnsupportedOperationException.class)
